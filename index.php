@@ -6,7 +6,9 @@ namespace App;
 require_once("src/Utils/Debug.php");
 require_once("src/View.php");
 
-$action = $action = $_GET['action'] ?? null;
+const DEFAULT_ACTION = 'list';
+
+$action = $action = $_GET['action'] ?? DEFAULT_ACTION;
 
 $view = new View();
 $view->render($action);
