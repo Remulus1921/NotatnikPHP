@@ -15,13 +15,15 @@ $view = new View();
 $viewParams = [];
 if ($action === 'create')
 {   
+    $page = 'create';
     $viewParams['resultCreate'] = "udało się";
 }
 else 
 {
+    $page = 'list';
     $viewParams['resultList'] = "wyświetlamy notatki";
 }
 
-$view->render($action, $viewParams);
+$view->render($page, $viewParams);
 
 ?>
