@@ -4,45 +4,13 @@ declare(strict_types = 1);
 namespace App;
 
 require_once("src/Utils/Debug.php");
-require_once("src/View.php");
+require_once("src/Utils/Controller.php");
 
-const DEFAULT_ACTION = 'list';
 
-$action = $action = $_GET['action'] ?? DEFAULT_ACTION;
 
-$view = new View();
+$controller = new Controller($_GET, $_POST);
+$controller->run();
 
-$viewParams = [];
 
-switch($action)
-{
-    case 'create':
-        $page = 'create';
-        $created = false;
-        if(!empty($_POST))
-        {
-            $created = true;
-            $viewParams = [
-                'title' => $_POST['title'],
-                'description' => $_POST['description']
-            ];
-        }
-        $viewParams['created'] = $created;
-        break;
-
-    case 'show':
-        $viewParams = [
-            'title' => 'Moja notatka',
-            'description' => 'Opis'
-        ];
-        break;
-        
-    default:
-        $page = 'list';
-        $viewParams['resultList'] = "wyświetlamy notatki";
-        break;
-}
-
-$view->render($page, $viewParams);
 
 ?>
