@@ -16,7 +16,7 @@
             <div class="menu">
                     <ul>
                         <li>
-                            <a href="/">Lista notatek</a>
+                            <a href="/">Strona główna</a>
                         </li>
                         <li>
                             <a href="/?action=create">Nowa notatka</a>
