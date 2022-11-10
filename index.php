@@ -6,6 +6,8 @@ namespace App;
 require_once("src/Utils/Debug.php");
 require_once("src/Utils/Controller.php");
 
+$configuration = require_once("config/config.php"); 
+
 $request = [
     'get' => $_GET,
     'post' => $_POST
@@ -14,6 +16,6 @@ $request = [
 //$controller = new Controller($request);
 //$controller->run();
 
-(new Controller($request))->run(); //Robi to samo co dwie zakomentowane linijki powyżej w jednej
+(new Controller($request))->run(); //Robi to samo co dwie zakomentowane linijki powyżej w jednej lini
 
 ?>
