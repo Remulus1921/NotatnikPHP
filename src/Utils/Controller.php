@@ -3,8 +3,13 @@ declare(strict_types = 1);
 
 namespace App;
 
+require_once("src/Exception/ConfigurationException.php");
 require_once("src/View.php");
 require_once("Database.php");
+
+use App\Exception\ConfigurationException;
+
+
 
 class Controller
 {
@@ -22,11 +27,14 @@ class Controller
 
     public function __construct(array $request)
     {
+        if(empty(self::$configuration['db']))
+        {
+            throw new ConfigurationException('Cofniguration error');
+        }
         $db = new Database(self::$configuration['db']);
+
         $this->request = $request;
         $this->view = new View();
-        
-        //dump(self::$configuration);
     }
 
     public function run(): void
