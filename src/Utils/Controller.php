@@ -8,8 +8,7 @@ require_once("src/View.php");
 require_once("Database.php");
 
 use App\Exception\ConfigurationException;
-
-
+use App\Exception\NotFoundException;
 
 class Controller
 {
@@ -40,8 +39,6 @@ class Controller
 
     public function run(): void
     {
-        $viewParams = [];
-
         switch($this->action())
         {
             case 'create':
@@ -60,6 +57,19 @@ class Controller
                 break;
 
             case 'show':
+                $page = 'show';
+
+                $data = $this->getRequestGet();
+                $noteId = (int)$data['id'];
+
+                try
+                {
+                    $this->database->getNote($noteId);
+                }
+                catch(NotFoundException $e)
+                {
+                    exit('jesteśmy w kontrolerze');
+                }
                 $viewParams = [
                     'title' => 'Moja notatka',
                     'description' => 'Opis'
@@ -71,11 +81,14 @@ class Controller
 
                 $data = $this->getRequestGet();
 
-                $viewParams['before'] = $data['before'] ?? null;
+                $viewParams = [
+                    'notes' => $this->database->getNotes(),
+                    'before' => $data['before'] ?? null
+                ];
                 break;
         }
 
-        $this->view->render($page, $viewParams);
+        $this->view->render($page, $viewParams ?? []);
     }
 
     private function action(): string
