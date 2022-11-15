@@ -2,12 +2,31 @@
     <section>
         <div class="message">
             <?php
-            switch($params['before'])
+            if(!empty($params['error']))
             {
-                case 'created':
-                    echo 'Notatka została utworzona';
-                break;
-            }
+                switch($params['error'])
+                {
+                    case 'noteNotFound':
+                        echo 'Notatka nie została znaleźiona';
+                    break;
+                    case 'missingNoteId':
+                        echo 'Nie poprawny identyfikator notatki';
+                    break;
+                }
+            }   
+            ?>
+        </div>
+        <div class="message">
+            <?php
+            if(!empty($params['buffor']))
+            {
+                switch($params['before'])
+                {
+                    case 'created':
+                        echo 'Notatka została utworzona';
+                    break;
+                }
+            }   
             ?>
         </div>
 
@@ -32,8 +51,8 @@
                             <td><?php echo htmlentities($note['title']) ?></td>
                             <td><?php echo htmlentities($note['created']) ?></td>
                             <td>
-                                <a href="/?action=show&id=<?php echo (int)$note['id'] ?>" >Pokaż</a>
-                                <button>Szczegóły</button>
+                                <a href="/?action=show&id=<?php echo (int)$note['id'] ?>" >
+                                <button>Szczegóły</button></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
