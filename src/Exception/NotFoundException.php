@@ -10,5 +10,3 @@ class NotFoundException extends AppException
 {
 
 }
-
-?>

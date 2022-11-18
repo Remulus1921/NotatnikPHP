@@ -10,5 +10,3 @@ class ConfigurationException extends AppException
 {
 
 }
-
-?>

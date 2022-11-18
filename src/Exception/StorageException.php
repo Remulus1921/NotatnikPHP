@@ -10,5 +10,3 @@ class StorageException extends AppException
 {
 
 }
-
-?>

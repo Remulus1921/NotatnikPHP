@@ -19,5 +19,3 @@ function dump($data)
     print_r($data);
     echo '</pre></div><br/>';
 }
-
-?>
