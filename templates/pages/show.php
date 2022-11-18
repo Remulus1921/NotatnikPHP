@@ -2,9 +2,9 @@
     <?php $note = $params['note'] ?? null;?>
     <?php if($note) : ?>
         <ul>
-            <li>Tytuł: <?php echo htmlentities($note['title'])?></li>
-            <li><?php echo htmlentities($note['description'])?></li>
-            <li>Utworzono: <?php echo htmlentities($note['created'])?></li>
+            <li>Tytuł: <?php echo $note['title']?></li>
+            <li><?php echo $note['description']?></li>
+            <li>Utworzono: <?php echo $note['created']?></li>
         </ul>
         </a>
         <?php else: ?>

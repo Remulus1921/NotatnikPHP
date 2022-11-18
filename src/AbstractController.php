@@ -6,7 +6,7 @@ namespace App;
 
 require_once("Exception/ConfigurationException.php");
 require_once("src/View.php");
-require_once("Database.php");
+require_once("src/Utils/Database.php");
 
 use App\Exception\ConfigurationException;
 
