@@ -5,7 +5,7 @@ namespace App;
 
 require_once("src/Utils/Debug.php");
 require_once("src/Utils/Request.php");
-require_once("src/Utils/Controller.php");
+require_once("src/Utils/NoteController.php");
 require_once("src/Exception/AppException.php");
 
 use App\Exception\AppException;
@@ -27,9 +27,9 @@ try
 {
     //$controller = new Controller($request);
     //$controller->run();
-    Controller::initConfiguration($configuration);
+    AbstractController::initConfiguration($configuration);
 
-    (new Controller($request))->run(); //Robi to samo co dwie zakomentowane linijki powyżej w jednej lini
+    (new NoteController($request))->run(); //Robi to samo co dwie zakomentowane linijki powyżej w jednej lini
 }
 catch(ConfigurationException $e)
 {
@@ -47,4 +47,3 @@ catch(Throwable $e)
     echo "<h1>Wystąpił błąd w aplikacji</h1>";
     dump($e);
 }
-?>
