@@ -22,7 +22,7 @@ $request = [
     'post' => $_POST
 ];
 
-$request = new Request($_GET, $_POST);
+$request = new Request($_GET, $_POST, $_SERVER);
 
 try 
 {
