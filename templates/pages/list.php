@@ -18,12 +18,15 @@
         </div>
         <div class="message">
             <?php
-            if(!empty($params['buffor']))
+            if(!empty($params['before']))
             {
                 switch($params['before'])
                 {
                     case 'created':
                         echo 'Notatka została utworzona';
+                    break;
+                    case 'edited':
+                        echo 'Notatka została zaktualizowana';
                     break;
                 }
             }   
